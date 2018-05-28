@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>grocery list</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+    <script src="main.js" charset="utf-8" defer></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="food in items"
+            v-bind:key="food.id">
+            {{ food.food }}
+            <p v-on:click="removeItem(food.id)">remove</p>
+        </li>
+      </ul>
+
+      <input type="text" v-model="newItem" placeholder="add a new item">
+      <p>{{ newItem }}</p>
+      <button type="button" v-on:click="addItem()">add</button>
+    </div>
+  </body>
+</html>
