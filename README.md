@@ -6,7 +6,7 @@
 
 ## Description
 
-_A single page website to remove and add items_
+_A single page website to remove and add items, made to understand Sass Vuejs and css grid_
 
 ## Setup/Installation Requirements
 
@@ -26,5 +26,6 @@ _If you run into any issues or have questions, ideas or concerns contact me at t
 
 _HTML_
 _CSS_
+_sass_
 _Javascript_
 _vuejs_
