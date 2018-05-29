@@ -4,21 +4,29 @@
     <meta charset="utf-8">
     <title>grocery list</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
-    <script src="main.js" charset="utf-8" defer></script>
+    <script src="app.js" charset="utf-8" defer></script>
+    <link rel="stylesheet" href="output.css">
   </head>
   <body>
     <div id="app">
       <ul>
-        <li v-for="food in items"
-            v-bind:key="food.id">
-            {{ food.food }}
-            <p v-on:click="removeItem(food.id)">remove</p>
-        </li>
+        <li is="todo-item"
+            v-for="(currentTodo, index) in todos"
+            v-bind:key="currentTodo.id"
+            v-on:remove="todos.splice(index, 1)"
+            v-on:deletestate="currentTodo.isActive ?
+                              currentTodo.isActive = false : currentTodo.isActive = true"
+            v-bind:text="currentTodo.text"
+            v-bind:src="currentTodo.image"
+            v-bind:class="[{active: currentTodo.isActive}, currentTodo.isEven ? purple : orange]"
+            ></li>
       </ul>
 
-      <input type="text" v-model="newItem" placeholder="add a new item">
-      <p>{{ newItem }}</p>
-      <button type="button" v-on:click="addItem()">add</button>
+      <div class="form">
+        <input placeholder="add a new item to the list" type="text" v-model="newTodo">
+        <button type="button" v-on:click="submitTodo"> add item</button>
+        <button type="button" v-on:click="removeTodos"> remove item</button>
+      </div>
     </div>
   </body>
 </html>
